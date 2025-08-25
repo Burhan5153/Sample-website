@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - Tech Store</title>
+  <link rel="stylesheet" href="style.css" />
+
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">TECH STORE</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="product.html">Products</a>
+      <a href="aboutUs.html">About</a>
+      <a href="Contact.html">Contact</a>
+      <a href="signup.html">Signup</a>
+      <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span id="cart-count">0</span></a>
+      <button id="darkModeToggle">Dark Mode</button>
+    </nav>
+  </header>
+
+  <section class="product-page">
+    <div class="left">
+      <img id="main-img" src="" alt="Product" />
+
+      <div class="thumbnails"></div>
+    </div>
+
+    <div class="right">
+      <h1>Loading…</h1>
+
+
+      <section class="description">
+        <h3>Product Description</h3>
+        <p></p>
+
+        <h3>Specifications</h3>
+        <ul></ul>
+      </section>
+
+
+
+      <p class="price"></p>
+      <p class="status">Availability: <span>In Stock</span></p>
+
+
+
+      <button class="cart-btn">Add to Cart</button>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="social">
+      <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+    </div>
+    <ul class="list">
+      <li><a href="#">FAQs</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About </a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+    <p class="copy-right">2025 TechStore | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const products = {
+      1: {
+        title: "iPhone 16 Pro Max",
+        price: "Rs 450000",
+        oldPrice: "Rs 500,000",
+        discount: "10% OFF",
+        images: ["images/16promax.jpg", "images/16promax2.jpg", "images/16promax3.jpg", "images/16promax4.jpg"],
+        description: "iPhone 16 Pro Max with A18 Pro chip, ProMotion display, and Titanium design.",
+        specs: [
+          "Display: 6.9-inch Super Retina XDR OLED, 120Hz",
+          "Chip: Apple A18 Pro",
+          "Storage: 256GB, 512GB, 1TB",
+          "Camera: 48MP Main + 12MP Ultra-Wide + 12MP Telephoto",
+          "Front Camera: 12MP TrueDepth",
+          "Battery: Up to 29 hours video playback",
+          "OS: iOS 18",
+          "Build: Titanium with Ceramic Shield"
+        ]
+      },
+      2: {
+        title: "MacBook Pro M3 14-inch",
+        price: "Rs 600,000",
+        oldPrice: "Rs 700,000",
+        discount: "15% OFF",
+        images: ["images/macbookpro.webp", "images/macbookpro2.jpg", "images/macbookpro3.jpg"],
+        description: "MacBook Pro 14-inch powered by M3 Pro chip with advanced performance.",
+        specs: [
+          "Display: 14.2-inch Liquid Retina XDR",
+          "Chip: Apple M3 Pro",
+          "RAM: 16GB / 32GB",
+          "Storage: 512GB, 1TB, 2TB SSD",
+          "Battery: Up to 22 hours",
+          "Graphics: 14-core GPU",
+          "OS: macOS Sequoia",
+          "Ports: HDMI, Thunderbolt 4, SDXC slot, MagSafe 3"
+        ]
+      },
+      3: {
+        title: "Apple AirPods Max",
+        price: "Rs 180,000",
+        oldPrice: "Rs 200,000",
+        discount: "10% OFF",
+        images: ["images/Appleheadphone.jpg", "images/Appleheadphone2.jpg", "images/Appleheadphone3.jpg", "images/Appleheadphone4.jpg"],
+        description: "High-fidelity over-ear headphones with Active Noise Cancellation and Spatial Audio.",
+        specs: [
+          "Drivers: Apple-designed dynamic driver",
+          "Audio: Active Noise Cancellation, Transparency Mode, Spatial Audio",
+          "Battery: Up to 20 hours",
+          "Charging: Lightning connector",
+          "Connectivity: Bluetooth 5.0",
+          "Build: Stainless steel frame with memory foam ear cushions"
+        ]
+      },
+      4: {
+        title: "Apple Watch Ultra",
+        price: "Rs 250,000",
+        oldPrice: "Rs 280,000",
+        discount: "11% OFF",
+        images: ["images/watchultra.jpg", "images/watchultra2.jpg", "images/watchultra3.jpg", "images/watchultra4.jpg"],
+        description: "Apple Watch Ultra with rugged titanium case, designed for adventure.",
+        specs: [
+          "Display: 49mm Always-On Retina",
+          "Build: Titanium case with sapphire crystal",
+          "Water Resistance: 100m",
+          "Battery: Up to 36 hours",
+          "GPS: Dual-frequency precision GPS",
+          "Sensors: Depth gauge, temperature sensor, ECG, Blood Oxygen"
+        ]
+      },
+      5: {
+        title: "iPad Pro 12.9-inch (M2)",
+        price: "Rs 320,000",
+        oldPrice: "Rs 360,000",
+        discount: "12% OFF",
+        images: ["images/ipadpro.jpg", "images/ipadpro2.jpg", "images/ipadpro3.jpg"],
+        description: "iPad Pro with M2 chip, stunning display, and Apple Pencil hover feature.",
+        specs: [
+          "Display: 12.9-inch Liquid Retina XDR",
+          "Chip: Apple M2",
+          "Storage: 128GB to 2TB",
+          "Camera: 12MP Wide + 10MP Ultra-Wide",
+          "Front Camera: 12MP Ultra-Wide with Center Stage",
+          "Battery: Up to 10 hours",
+          "OS: iPadOS 17",
+          "Connectivity: Wi-Fi 6E, 5G (cellular models)"
+        ]
+      },
+      6: {
+        title: "Samsung Galaxy S25 Ultra",
+        price: "Rs 410,000",
+        oldPrice: "Rs 450,000",
+        discount: "9% OFF",
+        images: ["images/s25ultra.jpg", "images/s25ultra2.jpg", "images/s25ultra3.jpg"],
+        description: "Samsung Galaxy S25 Ultra with Snapdragon 8 Gen 4 and powerful cameras.",
+        specs: [
+          "Display: 6.8-inch Dynamic AMOLED 2X, 120Hz",
+          "Chip: Snapdragon 8 Gen 4",
+          "RAM: 12GB / 16GB",
+          "Storage: 256GB, 512GB, 1TB",
+          "Camera: 200MP + 12MP + 10MP + 50MP",
+          "Front Camera: 12MP",
+          "Battery: 5000mAh with 45W fast charging",
+          "OS: Android 15 One UI"
+        ]
+      },
+      7: {
+        title: "Samsung Galaxy Z Fold 7",
+        price: "Rs 480,000",
+        oldPrice: "Rs 520,000",
+        discount: "8% OFF",
+        images: ["images/zFold.jpg", "images/zFold2.jpg", "images/zFold3.webp"],
+        description: "Next-gen foldable smartphone with enhanced durability and multitasking.",
+        specs: [
+          "Main Display: 7.8-inch Dynamic AMOLED 2X, 120Hz",
+          "Cover Display: 6.3-inch AMOLED, 120Hz",
+          "Chip: Snapdragon 8 Gen 4",
+          "RAM: 12GB",
+          "Storage: 256GB, 512GB, 1TB",
+          "Camera: Triple-lens with 50MP main",
+          "Battery: 4800mAh",
+          "OS: Android 15 One UI"
+        ]
+      },
+      8: {
+        title: "Sony PlayStation 5",
+        price: "Rs 200,000",
+        oldPrice: "Rs 230,000",
+        discount: "13% OFF",
+        images: ["images/ps5.jpg", "images/ps52.jpg", "images/ps53.jpg", "images/ps54.jpg"],
+        description: "Sony PlayStation 5 with ultra-high-speed SSD and ray tracing support.",
+        specs: [
+          "CPU: AMD Ryzen Zen 2 Octa-core",
+          "GPU: AMD RDNA 2, Ray Tracing",
+          "RAM: 16GB GDDR6",
+          "Storage: 825GB SSD",
+          "Resolution: Up to 8K",
+          "Frame Rate: Up to 120fps",
+          "Controller: DualSense with haptic feedback"
+        ]
+      },
+      9: {
+        title: "Bose Smart Speakers 900",
+        price: "Rs 120,000",
+        oldPrice: "Rs 140,000",
+        discount: "14% OFF",
+        images: ["images/bose.avif", "images/bose2.avif", "images/bose3.avif"],
+        description: "Premium Bose smart speaker with Dolby Atmos and Alexa built-in.",
+        specs: [
+          "Audio: Dolby Atmos with custom Bose drivers",
+          "Connectivity: Wi-Fi, Bluetooth, AirPlay 2",
+          "Voice Assistants: Alexa, Google Assistant",
+          "Controls: Touch + Voice + App",
+          "Build: Glass top and metal grill"
+        ]
+      },
+      10: {
+        title: "Apple Vision Pro",
+        price: "Rs 1,000,000",
+        oldPrice: "Rs 1,100,000",
+        discount: "9% OFF",
+        images: ["images/visionpro.jpg", "images/visionpro2.jpg"],
+        description: "Apple Vision Pro, spatial computing headset with visionOS.",
+        specs: [
+          "Display: Dual 4K micro-OLED",
+          "Chip: Apple M2 + R1",
+          "Audio: Spatial Audio system",
+          "Input: Eye, hand, and voice control",
+          "Battery: Up to 2 hours external pack",
+          "OS: visionOS",
+          "Build: Aluminum frame, 3D knitted headband"
+        ]
+      },
+      11: {
+        title: "Audionic Power Bank 20000mAh",
+        price: "Rs 12,000",
+        oldPrice: "Rs 15,000",
+        discount: "20% OFF",
+        images: ["images/powerbank.jpg", "images/powerbank2.jpg", "images/powerbank3.jpg", "images/powerbank4.jpg"],
+        description: "Audionic high-capacity power bank for fast charging on the go.",
+        specs: [
+          "Capacity: 20000mAh",
+          "Output: 22.5W fast charging",
+          "Ports: USB-C, USB-A",
+          "Input: Micro USB, USB-C",
+          "Features: LED battery indicator, safety protection"
+        ]
+      },
+      12: {
+        title: "TP-Link Archer AX6000 Wi-Fi Router",
+        price: "Rs 55,000",
+        oldPrice: "Rs 65,000",
+        discount: "15% OFF",
+        images: ["images/router.jpg", "images/router2.jpg", "images/router3.jpg"],
+        description: "High-performance Wi-Fi 6 router with ultra-fast speeds.",
+        specs: [
+          "Wi-Fi Standard: Wi-Fi 6 (802.11ax)",
+          "Speed: Up to 6000Mbps",
+          "Bands: Dual-band",
+          "Ports: 8 Gigabit LAN, 2 USB 3.0",
+          "Features: MU-MIMO, OFDMA, Beamforming"
+        ]
+      },
+      13: {
+        title: "Amazon Echo (Alexa Smart Device)",
+        price: "Rs 25,000",
+        oldPrice: "Rs 30,000",
+        discount: "16% OFF",
+        images: ["images/alexa.jpg", "images/alexa2.jpg", "images/alexa3.jpg"],
+        description: "Amazon Alexa smart speaker for home automation and entertainment.",
+        specs: [
+          "Audio: Premium speaker with Dolby processing",
+          "Voice Control: Alexa built-in",
+          "Connectivity: Wi-Fi, Bluetooth",
+          "Smart Home: Works with lights, plugs, thermostats",
+          "Features: Voice calling, routines, skills"
+        ]
+      },
+      14: {
+        title: "DJI Mavic Pro Drone",
+        price: "Rs 220,000",
+        oldPrice: "Rs 250,000",
+        discount: "12% OFF",
+        images: ["images/drone.jpg"],
+        description: "DJI Mavic Pro drone with 4K camera and advanced flight features.",
+        specs: [
+          "Camera: 4K 30fps stabilized",
+          "Flight Time: Up to 27 minutes",
+          "Range: 7 km",
+          "Sensors: Obstacle avoidance",
+          "Modes: ActiveTrack, TapFly, Gesture control"
+        ]
+      },
+      15: {
+        title: "TCL 65-inch QLED 4K Smart TV",
+        price: "Rs 180,000",
+        oldPrice: "Rs 210,000",
+        discount: "14% OFF",
+        images: ["images/Tv.png"],
+        description: "TCL QLED Smart TV with Dolby Vision and Google TV integration.",
+        specs: [
+          "Display: 65-inch 4K QLED HDR10+",
+          "Smart OS: Google TV",
+          "Audio: Dolby Atmos",
+          "Ports: HDMI 2.1, USB, Ethernet",
+          "Features: Voice remote, Chromecast built-in"
+        ]
+      },
+      16: {
+        title: "Sony A7S III Camera",
+        price: "Rs 750,000",
+        oldPrice: "Rs 800,000",
+        discount: "6% OFF",
+        images: ["images/camera.jpg"],
+        description: "Sony Alpha A7S III professional mirrorless camera for videography.",
+        specs: [
+          "Sensor: 12.1MP Full-frame Exmor R CMOS",
+          "Video: 4K 120fps, 10-bit 4:2:2",
+          "ISO: 40 – 409600",
+          "Autofocus: 759-point phase detection",
+          "Screen: 3-inch vari-angle touchscreen",
+          "Connectivity: Wi-Fi, Bluetooth, HDMI, USB-C"
+        ]
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    const mainImg = document.getElementById("main-img");
+    const thumbnailsWrap = document.querySelector(".thumbnails");
+    const titleEl = document.querySelector(".right h1");
+    const priceEl = document.querySelector(".price");
+    const descEl = document.querySelector(".description p");
+    const specsList = document.querySelector(".description ul");
+
+    function renderProduct(product) {
+      titleEl.textContent = product.title || "Product";
+      priceEl.innerHTML = `${product.price || ""} ${product.oldPrice ? `<span class=\"old-price\">${product.oldPrice}</span>` : ""
+        } ${product.discount ? `<span class=\"discount\">${product.discount}</span>` : ""}`;
+
+      descEl.textContent = product.description || "";
+
+      specsList.innerHTML = "";
+      (product.specs || []).forEach(spec => {
+        const li = document.createElement("li");
+        li.textContent = spec;
+        specsList.appendChild(li);
+      });
+
+      const imgs = product.images && product.images.length ? product.images : [];
+      thumbnailsWrap.innerHTML = "";
+      if (imgs.length) {
+        mainImg.src = imgs[0];
+        imgs.forEach(src => {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = "Product Thumbnail";
+          thumbnailsWrap.appendChild(img);
+        });
+      } else {
+        mainImg.removeAttribute("src");
+      }
+
+      thumbnailsWrap.querySelectorAll("img").forEach(thumb => {
+        thumb.addEventListener("click", () => {
+          mainImg.src = thumb.src;
+        });
+      });
+    }
+
+    if (productId && products[productId]) {
+      renderProduct(products[productId]);
+    } else {
+      const page = document.querySelector(".product-page");
+      page.innerHTML = `
+    <div class="not-found" style="padding:24px;">
+      <h2>Product not found</h2>
+      <p>Looks like this product doesn’t exist yet. Please go back and try again.</p>
+      <p><a href="product.html">← Back to products</a></p>
+    </div>
+  `;
+    }
+
+
+    // --- Cart functionality ---
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // get cart from storage if exists
+    const cartCount = document.getElementById("cart-count");
+    cartCount.textContent = cart.length; // show saved count on page load
+
+    const addToCartBtn = document.querySelector(".cart-btn");
+
+    if (addToCartBtn) {
+      addToCartBtn.addEventListener("click", () => {
+        if (productId && products[productId]) {
+          // Add product to cart array
+          cart.push(products[productId]);
+
+          // Save in localStorage
+          localStorage.setItem("cart", JSON.stringify(cart));
+
+          // Update count
+          cartCount.textContent = cart.length;
+        }
+      });
+    }
+
+  </script>
+
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>

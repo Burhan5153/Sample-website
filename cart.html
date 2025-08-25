@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">TECH STORE</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="aboutUs.html">About</a>
+            <a href="Contact.html">Contact</a>
+            <a href="signup.html">Signup</a>
+            <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
+                    id="cart-count">0</span></a>
+            <button id="darkModeToggle">Dark Mode</button>
+        </nav>
+    </header>
+
+    <div class="cart-container">
+        <h1>Your Shopping Cart</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+                <!-- Items will be inserted here -->
+            </tbody>
+        </table>
+
+        <div class="summary" id="cart-summary">
+            <!-- Summary will appear here -->
+        </div>
+
+        <button class="btn" onclick="showCheckoutForm()">Place Order</button>
+
+        <!-- Checkout Form -->
+        <div class="checkout-form" id="checkout-form">
+            <h2>Checkout</h2>
+            <form id="order-form">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Shipping Address</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="payment">Payment Method</label>
+                <select id="payment" name="payment" required>
+                    <option value="">Select</option>
+                    <option value="cod">Cash on Delivery</option>
+                    <option value="card">Credit/Debit Card</option>
+                </select>
+
+                <button type="submit" class="btn">Checkout</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fa fa-facebook-official"></i></a>
+            <a href="#"><i class="fa fa-linkedin-square"></i></a>
+            <a href="#"><i class="fa fa-twitter-square"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <ul class="list">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copy-right">2025 TechStore | All Rights Reserved</p>
+    </footer>
+
+    <script>
+
+
+
+
+        // ✅ Load cart from localStorage
+
+
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function renderCart() {
+            const cartItems = document.getElementById("cart-items");
+            const cartSummary = document.getElementById("cart-summary");
+            cartItems.innerHTML = "";
+            let subtotal = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `<tr><td colspan="4">Your cart is empty.</td></tr>`;
+                cartSummary.innerHTML = "";
+                return;
+            }
+
+            cart.forEach(item => {
+                // Convert price string to number
+                const price = parseInt(item.price.replace(/\D/g, ""));
+
+                // Ensure quantity exists
+                const quantity = item.quantity || 1;
+
+                let total = price * quantity;
+                subtotal += total;
+
+                cartItems.innerHTML += `
+        <tr>
+            <td>${item.title}</td>
+            <td>Rs ${price.toLocaleString()}</td>
+            <td>${quantity}</td>
+            <td>Rs ${total.toLocaleString()}</td>
+        </tr>
+    `;
+            });
+
+            let shipping = 2000;
+            let tax = subtotal * 0.05;
+            let grandTotal = subtotal + shipping + tax;
+
+            cartSummary.innerHTML = `
+        <p>Subtotal: Rs ${subtotal.toLocaleString()}</p>
+        <p>Shipping: Rs ${shipping.toLocaleString()}</p>
+        <p>Tax (5%): Rs ${tax.toLocaleString()}</p>
+        <h3>Grand Total: Rs ${grandTotal.toLocaleString()}</h3>
+      `;
+        }
+
+        function showCheckoutForm() {
+            document.getElementById("checkout-form").style.display = "block";
+        }
+
+        document.getElementById("order-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("✅ Order Placed Successfully!\nThank you, " + document.getElementById("name").value);
+
+            // ✅ Clear cart from localStorage
+            cart = [];
+            localStorage.removeItem("cart");
+
+            renderCart(); // update UI
+
+            this.reset();
+            document.getElementById("checkout-form").style.display = "none";
+        });
+
+        renderCart();
+
+
+    </script>
+
+
+
+</body>
+
+<script src="script.js"></script>
+
+</html>

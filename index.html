@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Store</title>
+
+    <!-- Google Fonts -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">TECH STORE</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="aboutUs.html">About</a>
+            <a href="Contact.html">Contact</a>
+            <a href="signup.html">Signup</a>
+            <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
+                    id="cart-count">0</span></a>
+            <button id="darkModeToggle">Dark Mode</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>YOUR ONE-STOP</h2>
+            <h1>TECH STORE</h1>
+
+            <!-- <h1>Your One-Stop<br>Tech Store</h1> -->
+            <p>Latest gadgets at the best prices</p>
+            <a href="product.html" class="btn-1">Shop Now</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/img.phone.jpg" alt="Gadget">
+        </div>
+    </section>
+
+    <!-- Shop by Category -->
+    <section class="category">
+        <h2>Shop by Category</h2>
+        <div class="category-row">
+            <div class="box" data-category="smartphone">
+                <img src="images/image12-Photoroom.png" alt="Smartphone">
+                <span>Smartphone</span>
+            </div>
+            <div class="box" data-category="camera">
+                <img src="images/camera.jpg" alt="Camera">
+                <span>Camera</span>
+            </div>
+            <div class="box" data-category="laptop">
+                <img src="images/laptop1-Photoroom.png" alt="Laptop">
+                <span>Laptop</span>
+            </div>
+            <div class="box" data-category="watch">
+                <img src="images/watch-Photoroom.png" alt="Watch">
+                <span>Watch</span>
+            </div>
+            <div class="box" data-category="headphone">
+                <img src="images/headphone-Photoroom.png" alt="Headphone">
+                <span>Headphone</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <h2>Featured Products</h2>
+        <div class="featured-row">
+            <div class="box-1">
+                <img src="images/image12-Photoroom.png" alt="Smartphone">
+                <span>$999.00</span>
+            </div>
+            <div class="box-1">
+                <img src="images/headphone-Photoroom.png" alt="Headphone">
+                <span>$199.00</span>
+            </div>
+            <div class="box-1">
+                <img src="images/laptop1-Photoroom.png" alt="Laptop">
+                <span>$1999.00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- products -->
+
+    <section class="products">
+        <h1>Our Products</h1>
+        <div class="product-grid">
+
+            <a href="product-details.html?id=1" class="product-card" data-category="smartphone">
+                <img src="images/16promax.jpg" alt="gadget mobile" height="400px">
+                <h2>Mobile Phone</h2>
+                <p>Latest flagship smartphones</p>
+            </a>
+
+            <a href="product-details.html?id=2" class="product-card" data-category="laptop">
+                <img src="images/macbookpro.webp" alt="gadget laptop" height="400px">
+                <h2>Laptop</h2>
+                <p>Powerful laptops for work & gaming</p>
+            </a>
+
+            <a href="product-details.html?id=3" class="product-card" data-category="headphone">
+                <img src="images/AppleHeadphone.jpg" alt="gadget headphones" height="400px">
+                <h2>Headphones</h2>
+                <p>Noise-cancelling & wireless</p>
+            </a>
+
+            <a href="product-details.html?id=4" class="product-card" data-category="watch">
+                <img src="images/watchUltra.jpg" alt="gadget watch" height="400px">
+                <h2>Smart Watch</h2>
+                <p>Track fitness & stay connected</p>
+            </a>
+
+            <a href="product-details.html?id=5" class="product-card">
+                <img src="images/ipadpro.jpg" alt="tablet gadget" height="400px">
+                <h2>Tablet</h2>
+                <p>Portable tablets for work & play</p>
+            </a>
+
+            <a href="product-details.html?id=6" class="product-card" data-category="smartphone">
+                <img src="images/s25ultra.jpg" alt="mobile gadget" height="400px">
+                <h2>Galaxy S25 Ultra</h2>
+                <p>Next-gen flagship smartphone</p>
+            </a>
+
+            <a href="product-details.html?id=7" class="product-card" data-category="smartphone">
+                <img src="images/zFold.jpg" alt="foldable gadget" height="400px">
+                <h2>Galaxy Z Fold</h2>
+                <p>Innovative foldable smartphone</p>
+            </a>
+
+            <a href="product-details.html?id=8" class="product-card">
+                <img src="images/ps5.jpg" alt="gaming console" height="400px">
+                <h2>Gaming Console</h2>
+                <p>Next-gen gaming experience</p>
+            </a>
+
+            <a href="product-details.html?id=9" class="product-card">
+                <img src="images/bose.avif" alt="speaker gadget" height="400px">
+                <h2>Speakers</h2>
+                <p>High-quality sound systems</p>
+            </a>
+
+
+            <a href="product-details.html?id=10" class="product-card">
+                <img src="images/visionpro.jpg" alt="vr headset" height="400px">
+                <h2>VR Headset</h2>
+                <p>Immersive virtual reality</p>
+            </a>
+
+            <a href="product-details.html?id=11" class="product-card">
+                <img src="images/powerbank.jpg" alt="powerbank gadget" height="400px">
+                <h2>Power Banks</h2>
+                <p>Charge on the go</p>
+            </a>
+
+            <a href="product-details.html?id=12" class="product-card">
+                <img src="images/router.jpg" alt="routers gadget" height="400px">
+                <h2>WiFi Routers</h2>
+                <p>Fast & secure internet</p>
+            </a>
+
+            <a href="product-details.html?id=13" class="product-card">
+                <img src="images/alexa.jpg" alt="smart home gadegt" height="400px">
+                <h2>Smart Home Devices</h2>
+                <p>Make your home smarter</p>
+            </a>
+
+            <a href="product-details.html?id=14" class="product-card">
+                <img src="images/drone.jpg" alt="drone gadget" height="400px">
+                <h2>Drones</h2>
+                <p>Capture moments from the sky</p>
+            </a>
+
+            <a href="product-details.html?id=15" class="product-card">
+                <img src="images/Tv.png" alt="smart tv" height="400px">
+                <h2>Smart TV</h2>
+                <p>Ultra HD smart television</p>
+            </a>
+
+            <a href="product-details.html?id=16" class="product-card" data-category="camera">
+                <img src="images/camera.jpg" alt="camera gadget" height="400px">
+                <h2>Camera</h2>
+                <p>Professional DSLR cameras</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social">
+            <a href="#"><i class="fa fa-facebook-official"></i></a>
+            <a href="#"><i class="fa fa-linkedin-square"></i></a>
+            <a href="#"><i class="fa fa-twitter-square"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <ul class="list">
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copy-right">2025 TechStore | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const categoryBoxes = document.querySelectorAll('.category .box');
+        const products = document.querySelectorAll('.product-grid .product-card');
+
+        categoryBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                const category = box.getAttribute('data-category');
+
+                products.forEach(product => {
+                    if (category === 'all' || product.getAttribute('data-category') === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Optional: show all products when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            products.forEach(product => product.style.display = 'block');
+        });
+
+    </script>
+
+    
+
+
+</body>
+<script src="script.js"></script>
+
+
+
+</html>
